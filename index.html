@@ -10,9 +10,27 @@
 <meta name="description" content="SCP-245 交互小说 · 简体中文翻译版（原作 Doctor Cimmerian，CC BY-SA 3.0）">
 <meta name="generator" content="Twine/Harlowe 3.3.5, translated">
 <style>
-/* 版权条：放在正文之后的正常文档流里，不悬浮、不遮挡任何正文（手机端也不会盖住最后一段） */
-body::after{content:"SCP-245 简体中文版 · 原作 Doctor Cimmerian · CC BY-SA 3.0 · 原文 scp-wiki.wikidot.com/scp-245";display:block;box-sizing:border-box;width:100%;margin:0;padding:14px 16px calc(22px + env(safe-area-inset-bottom,0px));font:11px/1.7 system-ui,-apple-system,'Microsoft YaHei',sans-serif;text-align:center;color:#8a8a8a;background:#000;border-top:1px solid #1a1a1a;white-space:normal;overflow-wrap:anywhere}
+/* 版权说明：注入到 tw-story 内部、排在正文之后（flex order 兜底），随内容一起滚动，绝不悬浮遮挡 */
+.zh-credit{order:9999;flex:0 0 auto;margin:2.4em 0 0;padding:16px 4px calc(26px + env(safe-area-inset-bottom,0px));font:11px/1.7 system-ui,-apple-system,'Microsoft YaHei',sans-serif!important;text-align:center;color:#8a8a8a!important;background:transparent;border-top:1px solid rgba(255,255,255,.09);white-space:normal;overflow-wrap:anywhere;letter-spacing:0}
 </style>
+
+<script>
+(function(){
+  var TEXT="SCP-245 简体中文版 · 原作 Doctor Cimmerian · CC BY-SA 3.0 · 原文 scp-wiki.wikidot.com/scp-245";
+  function place(){
+    var s=document.querySelector('tw-story');
+    if(!s) return false;
+    var d=document.getElementById('zh-credit');
+    if(!d){ d=document.createElement('div'); d.id='zh-credit'; d.className='zh-credit'; d.textContent=TEXT; }
+    if(d.parentNode!==s || s.lastElementChild!==d){ s.appendChild(d); }
+    return true;
+  }
+  place();
+  document.addEventListener('DOMContentLoaded', place);
+  window.addEventListener('load', place);
+  setInterval(place, 400);
+})();
+</script>
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play 245.</tw-noscript></noscript></tw-story>
