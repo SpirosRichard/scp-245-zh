@@ -1,0 +1,14 @@
+﻿SCP-245（交互小说）简体中文翻译版
+==================================
+
+原文：SCP-245 — https://scp-wiki.wikidot.com/scp-245
+交互页面：https://scp-wiki.wdfiles.com/local--files/scp-245/245.html
+作者：Doctor Cimmerian
+许可：CC BY-SA 3.0（https://creativecommons.org/licenses/by-sa/3.0/）
+本翻译为衍生作品，同样以 CC BY-SA 3.0 许可发布。
+
+说明：
+- 本文件是原 Twine（Harlowe 3.3.5）交互故事的简体中文翻译版，
+  保留全部 29 个节点、分支与宏命令，仅翻译用户可见文本。
+- 未改动任何脚本/引擎代码；文件可离线双击打开，也可用静态服务器托管。
+- 翻译：2026-11-19。
