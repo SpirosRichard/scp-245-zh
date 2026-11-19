@@ -12,8 +12,11 @@
 <style>
 /* 版权说明：位于正文之后的正文流里；无边框线、无背景块，避免任何"白条"观感 */
 html,body{background:#000!important}
-/* 隐藏 Harlowe 自带的撤销/重做箭头按钮（手机上会突然冒出、点击前后跳转） */
+/* 隐藏 Harlowe 自带的侧边撤销/重做箭头（手机上会突然冒出） */
 tw-sidebar,tw-icon{display:none!important}
+/* 顶部「撤回」按钮（替代原侧边箭头） */
+#zh-undo{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:12px;z-index:2147483646;-webkit-appearance:none;appearance:none;margin:0;padding:7px 14px;min-height:32px;font:13px/1.2 system-ui,-apple-system,'Microsoft YaHei',sans-serif;color:#c9c9c9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:999px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;opacity:.92}
+#zh-undo:active{background:rgba(255,255,255,.2);color:#fff}
 .zh-credit{order:9999;flex:0 0 auto;margin:1.6em 0 0;padding:0 4px calc(20px + env(safe-area-inset-bottom,0px));font:10.5px/1.8 system-ui,-apple-system,'Microsoft YaHei',sans-serif!important;text-align:center;color:#6f6f6f!important;background:transparent;border:0;white-space:normal;overflow-wrap:anywhere;letter-spacing:0}
 </style>
 
@@ -28,10 +31,23 @@ tw-sidebar,tw-icon{display:none!important}
     if(d.parentNode!==s || s.lastElementChild!==d){ s.appendChild(d); }
     return true;
   }
-  place();
-  document.addEventListener('DOMContentLoaded', place);
-  window.addEventListener('load', place);
-  setInterval(place, 400);
+  function undo(){
+    var u=document.querySelector('tw-sidebar tw-icon[alt="Undo"]') || document.querySelector('tw-icon[alt="Undo"]');
+    if(u){ u.click(); }
+  }
+  function topbar(){
+    if(document.getElementById('zh-undo')) return;
+    var b=document.createElement('button');
+    b.id='zh-undo'; b.type='button'; b.textContent='← 撤回'; b.title='撤回上一步';
+    b.setAttribute('aria-label','撤回上一步');
+    b.addEventListener('click', undo);
+    document.body.appendChild(b);
+  }
+  function boot(){ place(); topbar(); }
+  place(); topbar();
+  document.addEventListener('DOMContentLoaded', boot);
+  window.addEventListener('load', boot);
+  setInterval(boot, 500);
 })();
 </script>
 </head>
